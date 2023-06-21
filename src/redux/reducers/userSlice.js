@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
   email: 'jaja@gmail.com',
   fullName: 'ja ja',
-  token: '423'
+  token: 423
 }
 
 export const userSlice = createSlice({
