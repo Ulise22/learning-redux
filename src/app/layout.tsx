@@ -1,6 +1,7 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
-import { Providers } from '@/redux/providers'
+import { Providers } from '@/redux/services/providers'
+import Link from 'next/link'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,7 +18,14 @@ export default function RootLayout ({
   return (
     <html lang='en'>
       <Providers>
-        <body className={inter.className}>{children}</body>
+        <body className={inter.className}>
+          <nav className='flex gap-6 p-4 text-blue-400 text-2xl'>
+            <Link href='/'>Home</Link>
+            <Link href='./mall'>Mall</Link>
+            <Link href='./cart'>Cart</Link>
+          </nav>
+          {children}
+        </body>
       </Providers>
     </html>
   )
