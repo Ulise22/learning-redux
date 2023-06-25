@@ -1,21 +1,42 @@
 'use client'
 
-import { useSelector } from 'react-redux'
+import Image from 'next/image'
+import { removeProductFromCart } from '@/redux/reducers/cartSlice'
+import { useSelector, useDispatch } from 'react-redux'
 
 export default function Cart () {
-  const { totalCount, productsList } = useSelector(state => state.cart)
+  const dispatch = useDispatch()
+  const { totalCount, productsList, totalPrice } = useSelector(state => state.cart)
+
+  const removeProduct = (id, price) => {
+    const datos = [id, price]
+
+    dispatch(removeProductFromCart(datos))
+  }
   return (
     <main>
       <h1 className='text-white text-5xl text-center'>Cart</h1>
-      <h3> {totalCount} </h3>
+      <h3 className='mb-4'>Productos totales: {totalCount} </h3>
 
-      {productsList.map(product => {
-        return (
-          <section key={product.id}>
-            <h4> {product.name} </h4>
-          </section>
-        )
-      })}
+      <article className='flex flex-col gap-5'>
+        {productsList.map(product => {
+          return (
+            <section className='flex ml-4 items-center justify-between gap-4 border p-4' key={product.id}>
+              <div className='flex items-center gap-4'>
+                <button onClick={() => removeProduct(product.id, product.price)} className='p-2 bg-red-500 text-black'>Borrar</button>
+                <Image src={product.image} alt='product from a store' width={200} height={200} />
+                <div className='self-start'>
+                  <h3 className='text-3xl font-semibold uppercase'> {product.name} </h3>
+                  <p className='font-thin'> {product.year} </p>
+                </div>
+              </div>
+              <h2 className='text-4xl mr-4 font-bold'> ${product.price} </h2>
+            </section>
+          )
+        })}
+      </article>
+
+      <h2 className='text-4xl mt-4'>Total: <span className='font-bold'> {totalPrice} </span></h2>
     </main>
   )
 }
