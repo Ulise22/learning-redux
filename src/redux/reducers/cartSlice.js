@@ -20,10 +20,14 @@ export const cartSlice = createSlice({
       state.totalCount -= 1
       state.totalPrice -= action.payload[1]
       state.productsList = state.productsList.filter(item => item.id !== productId)
+    },
+    changeName: (state, action) => {
+      const productIndex = action.payload
+      state.productsList[productIndex].name = 'nuevo nombre'
     }
   }
 })
 
-export const { addProductToCart, removeProductFromCart } = cartSlice.actions
+export const { addProductToCart, removeProductFromCart, changeName } = cartSlice.actions
 
 export default cartSlice.reducer

@@ -1,12 +1,16 @@
 'use client'
 
 import Image from 'next/image'
-import { removeProductFromCart } from '@/redux/reducers/cartSlice'
+import { removeProductFromCart, changeName } from '@/redux/reducers/cartSlice'
 import { useSelector, useDispatch } from 'react-redux'
 
 export default function Cart () {
   const dispatch = useDispatch()
   const { totalCount, productsList, totalPrice } = useSelector(state => state.cart)
+
+  const changeProductName = (index) => {
+    dispatch(changeName(index))
+  }
 
   const removeProduct = (id, price) => {
     const datos = [id, price]
@@ -21,7 +25,7 @@ export default function Cart () {
       <article className='flex flex-col gap-5'>
         {productsList.map(product => {
           return (
-            <section className='flex ml-4 items-center justify-between gap-4 border p-4' key={product.id}>
+            <section className='flex mx-8 items-center justify-between gap-4 border p-4' key={product.id}>
               <div className='flex items-center gap-4'>
                 <button onClick={() => removeProduct(product.id, product.price)} className='p-2 bg-red-500 text-black'>Borrar</button>
                 <Image src={product.image} alt='product from a store' width={200} height={200} />
@@ -31,6 +35,8 @@ export default function Cart () {
                 </div>
               </div>
               <h2 className='text-4xl mr-4 font-bold'> ${product.price} </h2>
+
+              <button onClick={() => changeProductName(productsList.indexOf(product))} className='bg-red-500 text-black p-2'>Cambiar nombre</button>
             </section>
           )
         })}

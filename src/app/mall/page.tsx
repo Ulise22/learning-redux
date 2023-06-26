@@ -8,8 +8,6 @@ import { addProductToCart } from '@/redux/reducers/cartSlice'
 export default function Mall () {
   const dispatch = useDispatch()
   const { productsList } = useSelector(state => state.cart)
-  console.log(productsList)
-
   const addProduct = (productId) => {
     const product = data.find(product => product.id === productId)
     if (!productsList.find(item => item === product)) {
