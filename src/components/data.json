@@ -5,7 +5,8 @@
         "year": "2023",
         "image": "https://elterritorio1.cdn.net.ar/252/elterritorio1/images/27/60/276030_d028a1682f90cceba23c291b891499ad21f201dbabfce0c78e027b5fc9325811/lg.webp",
         "amount": 1,
-        "price": 295
+        "price": 295,
+        "totalPrice": 295
     },
     {
         "id": 2,
@@ -13,7 +14,8 @@
         "year": "2019",
         "image": "https://smarts.com.ar/media/catalog/product/cache/e2fffb2b85fe85187f9dedbb6434d061/m/9/m908-impact_ok.jpg",
         "amount": 1,
-        "price": 8907
+        "price": 8907,
+        "totalPrice": 8907
     },
     {
         "id": 3,
@@ -21,6 +23,7 @@
         "year": "2021",
         "image": "https://media01.farmaciaslider.com.ar/30587-thickbox_default/axe-dark-temptation-chocolate-desodorante-en-aerosol-150-ml.jpg",
         "amount": 1,
-        "price": 489
+        "price": 489,
+        "totalPrice": 489
     }
 ]
